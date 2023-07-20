@@ -13,6 +13,13 @@ const Surtidor = () => {
     { id: 6, name: "surtidor 6" },
   ];
 
+const navigate=useNavigate();
+
+const clickSurtidor =(id)=>{
+    localStorage.setItem('surtidor',id);
+    navigate('/product')
+}
+
   return (
     <>
       <Heading textAlign={"center"} marginBottom={"5"}>
@@ -35,6 +42,7 @@ const Surtidor = () => {
               color: "#fff",
               shadow: "2xl",
             }}
+            onClick={()=>clickSurtidor(surtidor.id)}
           >
             <Heading size={"lg"} textTransform={"capitalize"}>
               {surtidor.name}
