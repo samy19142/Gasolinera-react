@@ -15,12 +15,22 @@ import ImageDieselPlus from "../assets/img/diesel-plus.png";
 import { ArrowBackIcon } from "@chakra-ui/icons";
 
 const Product = () => {
+
+    const navigate =useNavigate();
+
   const typeGasoil = [
-    { type: "Gasoline SP 95", price: "1,65", imageSrc: ImageGasoil },
-    { type: "Gasoleo A", price: "1,55", imageSrc: ImageGasoilA },
-    { type: "Biodiesel A", price: "1,40", imageSrc: ImageAdBlue },
-    { type: "Diesel Plus", price: "1,99", imageSrc: ImageDieselPlus },
+    { type: "Gasolina Regular 88", price: "33", imageSrc: ImageGasoil },
+    { type: "Gasolina Super 95", price: "34.50", imageSrc: ImageGasoilA },
+    { type: "Diesel A", price: "28", imageSrc: ImageAdBlue },
+    { type: "Diesel Premium", price: "30", imageSrc: ImageDieselPlus },
   ];
+
+  const clickGasoil=(typeGasoil,priceGasoil)=>{
+    localStorage.setItem('typeGasoil',typeGasoil);
+    localStorage.setItem('priceGasoil',priceGasoil);
+    navigate('/method-payment');
+    
+  }
   return (
     <>
       <Heading textAlign={"center"} size={"lg"} marginBottom={"10"}>
@@ -40,7 +50,7 @@ const Product = () => {
             bgGradient:'linear(to-r, orange.100, yellow.100)',
             shadow:'2xl'
         }}
-        onClick={()=>console.log('seleccionando la gasolina')}
+        onClick={()=>clickGasoil(gasoil.type,gasoil.price)}
         >
         <Box>
             <Heading size={'md'} fontWeight={'extrabold'}>{gasoil.type}</Heading>
@@ -60,6 +70,19 @@ const Product = () => {
       ))}
 
       </Grid>
+      <Box marginTop={'40px'}>
+        <Stack
+        direction={'row'}
+        spacing={'4'}
+        cursor={'pointer'}
+        onClick={()=>navigate('/surtidor')}
+        >
+        <Button leftIcon={<ArrowBackIcon/>}
+        colorScheme="teal"
+        variant={'outline'}
+        >Volver al surtidor</Button>
+        </Stack>
+      </Box>
     </>
   );
 };
