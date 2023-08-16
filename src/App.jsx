@@ -14,7 +14,7 @@ function App() {
   return (
     <Box w={'100vw'} h={'100vh'}>
       <Navbar/>
-      <Container>
+      <Container paddingTop={'10'}>
       <Routes>
         <Route path='/' element={<Home/>}></Route>
         <Route path='/surtidor' element={<Surtidor/>}></Route>
