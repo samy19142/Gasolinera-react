@@ -5,6 +5,16 @@ import { ArrowBackIcon, ArrowForwardIcon } from "@chakra-ui/icons";
 
 const numbers = ["1", "2", "3", "4", "5", "6", "7", "8", "9"];
 const Quantity = () => {
+    const [counter, setCounter]= useState("");
+    const navigate = useNavigate();
+    const sumCounter =(number)=>{
+        setCounter(counter + number);
+    }
+
+    useEffect(()=>{
+        localStorage.setItem('quantity',counter)
+    },[counter]);
+
   return (
     <>
       <Grid marginBottom={5}>
@@ -26,8 +36,9 @@ const Quantity = () => {
             fontWeight={"700"}
             boxShadow={"0px 4px 10px -3px rgb(117,117,117)"}
             cursor={"pointer"}
+            fontSize={'40px'}
             _hover={{ shadow: "2xl" }}
-            onClick={() => console.log(number)}
+            onClick={() =>sumCounter(number)}
           >
             {number}
           </GridItem>
@@ -45,7 +56,7 @@ const Quantity = () => {
           cursor={"pointer"}
           fontWeight={700}
           boxShadow={"0px 10px -3px rgb(117,117,117)"}
-          _hover={{ shadow: "2xl" }}
+          _hover={{ shadow: "2xl"}}
           onClick={() => console.log("cero")}
         >
           0
@@ -68,6 +79,32 @@ const Quantity = () => {
           Borrar
         </GridItem>
       </Grid>
+
+      <Box marginTop={"40px"}>
+        <Stack
+        direction={'row'}
+        spacing={4}
+        cursor={'pointer'}
+        display={'flex'}
+        justifyContent={'space-between'}
+        >
+        <Button
+        leftIcon={<ArrowBackIcon/>}
+        colorScheme="teal"
+        variant={'outline'}
+        size={'lg'}
+        onClick={()=>navigate('/method-payment')}
+        >Volver atrás</Button>
+        <Button
+        leftIcon={<ArrowForwardIcon/>}
+        colorScheme="teal"
+        variant={'solid'}
+        size={'lg'}
+        onClick={()=>navigate('/resume')}
+        >Continuar</Button>
+        </Stack>
+        
+      </Box>
     </>
   );
 };
