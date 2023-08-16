@@ -5,22 +5,27 @@ import { ArrowBackIcon, ArrowForwardIcon } from "@chakra-ui/icons";
 
 const numbers = ["1", "2", "3", "4", "5", "6", "7", "8", "9"];
 const Quantity = () => {
-    const [counter, setCounter]= useState("");
-    const navigate = useNavigate();
-    const sumCounter =(number)=>{
-        setCounter(counter + number);
-    }
+  const [counter, setCounter] = useState("");
+  const navigate = useNavigate();
 
-    useEffect(()=>{
-        localStorage.setItem('quantity',counter)
-    },[counter]);
+  const sumCounter = (number) => {
+    setCounter(counter + number);
+  };
+
+  const clearCounter = () => {
+    setCounter("");
+  };
+
+  useEffect(() => {
+    localStorage.setItem("quantity", counter);
+  }, [counter]);
 
   return (
     <>
       <Grid marginBottom={5}>
         <Heading size={"lg"}> Pulse importe</Heading>
         <Heading size={"lg"} fontWeight={"800"}>
-          Contador de Quetzales
+          {counter ? <>Q.{counter}</> : <>Q.0 </>}
         </Heading>
       </Grid>
       <Grid templateColumns={"repeat(3, 1fr)"} gap={6}>
@@ -36,9 +41,9 @@ const Quantity = () => {
             fontWeight={"700"}
             boxShadow={"0px 4px 10px -3px rgb(117,117,117)"}
             cursor={"pointer"}
-            fontSize={'40px'}
+            fontSize={"40px"}
             _hover={{ shadow: "2xl" }}
-            onClick={() =>sumCounter(number)}
+            onClick={() => sumCounter(number)}
           >
             {number}
           </GridItem>
@@ -56,8 +61,9 @@ const Quantity = () => {
           cursor={"pointer"}
           fontWeight={700}
           boxShadow={"0px 10px -3px rgb(117,117,117)"}
-          _hover={{ shadow: "2xl"}}
-          onClick={() => console.log("cero")}
+          fontSize={"40px"}
+          _hover={{ shadow: "2xl" }}
+          onClick={() => sumCounter(0)}
         >
           0
         </GridItem>
@@ -71,7 +77,7 @@ const Quantity = () => {
           cursor={"pointer"}
           bg={"yellow"}
           _hover={{ shadow: "2xl" }}
-          onClick={() => console.log("borrar")}
+          onClick={clearCounter}
           display={"flex"}
           justifyContent={"center"}
           alignItems={"center"}
@@ -82,28 +88,36 @@ const Quantity = () => {
 
       <Box marginTop={"40px"}>
         <Stack
-        direction={'row'}
-        spacing={4}
-        cursor={'pointer'}
-        display={'flex'}
-        justifyContent={'space-between'}
+          direction={"row"}
+          spacing={4}
+          cursor={"pointer"}
+          display={"flex"}
+          justifyContent={"space-between"}
         >
-        <Button
-        leftIcon={<ArrowBackIcon/>}
-        colorScheme="teal"
-        variant={'outline'}
-        size={'lg'}
-        onClick={()=>navigate('/method-payment')}
-        >Volver atrás</Button>
-        <Button
-        leftIcon={<ArrowForwardIcon/>}
-        colorScheme="teal"
-        variant={'solid'}
-        size={'lg'}
-        onClick={()=>navigate('/resume')}
-        >Continuar</Button>
+          <Button
+            leftIcon={<ArrowBackIcon />}
+            colorScheme="teal"
+            variant={"outline"}
+            size={"lg"}
+            onClick={() => navigate("/method-payment")}
+          >
+            Volver atrás
+          </Button>
+
+          {counter ? (
+            <Button
+              leftIcon={<ArrowForwardIcon />}
+              colorScheme="teal"
+              variant={"solid"}
+              size={"lg"}
+              onClick={() => navigate("/resume")}
+            >
+              Continuar
+            </Button>
+          ) : (
+            ""
+          )}
         </Stack>
-        
       </Box>
     </>
   );
