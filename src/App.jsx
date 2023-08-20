@@ -1,5 +1,4 @@
 import { Box, Container } from '@chakra-ui/react';
-import './App.css';
 import Navbar from "./Components/Navbar";
 import { Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';

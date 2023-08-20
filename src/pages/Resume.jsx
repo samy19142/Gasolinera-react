@@ -18,7 +18,7 @@ import { useNavigate } from "react-router-dom";
 import { ArrowBackIcon } from "@chakra-ui/icons";
 
 const Resume = () => {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
   const surtidor = localStorage.getItem("surtidor");
   const typeGasoil = localStorage.getItem("typeGasoil");
   const methodPayment = localStorage.getItem("payment");
@@ -27,11 +27,10 @@ const Resume = () => {
 
   const finalGallon = quantity / priceGasoil;
 
-  const returnHome =()=>{
+  const returnHome = () => {
     localStorage.clear();
-    navigate('/')
-    
-  }
+    navigate("/");
+  };
   const resumeData = [
     {
       title: "Surtidor",

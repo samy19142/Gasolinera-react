@@ -4,10 +4,10 @@ import ImageClient from "../assets/img/button.png";
 import { useNavigate } from "react-router-dom";
 
 const Home = () => {
-    const navigate = useNavigate();
-    const buttonStart =()=>{
-        navigate('/surtidor')
-    }
+  const navigate = useNavigate();
+  const buttonStart = () => {
+    navigate("/surtidor");
+  };
 
   return (
     <Box w={"100%"}>
@@ -38,7 +38,7 @@ const Home = () => {
               Pulsa aquí
             </Heading>
           </div>
-            <Image src={ImageClick} alt="Click Here" width={"150px"} />
+          <Image src={ImageClick} alt="Click Here" width={"150px"} />
         </Box>
 
         <Box

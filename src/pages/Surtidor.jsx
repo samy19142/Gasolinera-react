@@ -13,12 +13,12 @@ const Surtidor = () => {
     { id: 6, name: "surtidor 6" },
   ];
 
-const navigate=useNavigate();
+  const navigate = useNavigate();
 
-const clickSurtidor =(id)=>{
-    localStorage.setItem('surtidor',id);
-    navigate('/product')
-}
+  const clickSurtidor = (id) => {
+    localStorage.setItem("surtidor", id);
+    navigate("/product");
+  };
 
   return (
     <>
@@ -42,16 +42,17 @@ const clickSurtidor =(id)=>{
               color: "#fff",
               shadow: "2xl",
             }}
-            onClick={()=>clickSurtidor(surtidor.id)}
+            onClick={() => clickSurtidor(surtidor.id)}
           >
             <Heading size={"lg"} textTransform={"capitalize"}>
               {surtidor.name}
             </Heading>
-            <Image src={ImageCard}
-            alt={surtidor.name}
-            width={100}
-            margin={'0 auto'}
-             />
+            <Image
+              src={ImageCard}
+              alt={surtidor.name}
+              width={100}
+              margin={"0 auto"}
+            />
           </GridItem>
         ))}
       </Grid>
